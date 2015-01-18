@@ -12,6 +12,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'haml'
+gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -17,5 +17,10 @@ describe 'Pages' do
       it { should have_content(user.email)}
       it { should have_content('Sign out') }
     end
+
+    describe 'for non-signed in user' do
+      it { should have_content('Sign in') }
+      it { should have_content('Sign up') }
+    end
   end
 end

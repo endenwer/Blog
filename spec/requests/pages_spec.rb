@@ -10,7 +10,7 @@ describe 'Pages' do
     it { should have_title('Index page') }
 
     describe 'for signed in user' do
-      let(:user) { User.create(email: 'foobar@mail.ru', password: 'foobar12', password_confirmation: 'foobar12') }
+      let(:user) { FactoryGirl.create(:user) }
 
       before { sign_in user }
 

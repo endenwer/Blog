@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121134655) do
+ActiveRecord::Schema.define(version: 20150121140902) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150121134655) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "views"
-    t.integer  "likes"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "views",       default: 0
+    t.integer  "likes",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "category_id"
   end
 
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150121134655) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "login"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

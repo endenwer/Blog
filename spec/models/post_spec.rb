@@ -18,7 +18,7 @@ describe Post do
   it { should be_valid }
 
   its(:user) { should eq user }
-  its(:view) { should eq 0 }
+  its(:views) { should eq 0 }
   its(:likes) { should eq 0 }
 
   describe  'when user_id is not present' do
@@ -32,7 +32,7 @@ describe Post do
   end
 
   describe 'with title that  it too long' do
-    before { @post.title = 'a' * 200 }
+    before { @post.title = 'a' * 201 }
     it { should_not be_valid }
   end
 

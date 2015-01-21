@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'guard-livereload', require: false
+  gem 'fuubar'
 end
 
 group :test do

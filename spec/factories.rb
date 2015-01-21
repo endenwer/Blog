@@ -11,4 +11,10 @@ FactoryGirl.define do
     content 'Content of a post. Lorem ipsum'
     user
   end
+
+  factory :comment do
+    content 'My comment'
+    post_id 1
+    user
+  end
 end

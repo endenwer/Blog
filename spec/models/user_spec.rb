@@ -66,4 +66,24 @@ describe User do
       end
     end
   end
+
+  describe 'comments associated' do
+    before { @user.save }
+
+    let!(:comment) { FactoryGirl.create(:comment, user: @user) }
+    let!(:comment2) { FactoryGirl.create(:comment, user: @user) }
+
+    it 'should have the user comments' do
+      expect(@user.comments).to include(comment)
+    end
+
+    it 'should destroy associated comment'do
+      comments = @user.comments.to_a
+      @user.destroy
+      expect(comments).not_to be_empty
+      comments.each do |comment|
+        expect(Comment.where(id: comment.id)).to be_empty
+      end
+    end
+  end
 end

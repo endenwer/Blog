@@ -15,6 +15,7 @@ describe Comment do
   it { should respond_to(:likes) }
 
   its(:likes) { should eq 0 }
+  its(:user) { should eq user }
 
   it { should be_valid }
 

@@ -2,19 +2,135 @@
 <html>
 <head>
   <title><%= yield(:title) %></title>
-  <%= stylesheet_link_tag "application", media: "all",
-                          "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Merriweather:400,400italic,700italic" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
-<body>
+<body id="home">
 
-<% if user_signed_in? %>
-    <p>Signed in as <%= current_user.email %>. Not you? <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %></p>
-<% else %>
-    <p><%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %></p>
-<% end %>
+<%= render 'layouts/menu' %>
 
-<%= yield %>
+<div id="wrap">
+  <%= render 'layouts/main_nav' %>
+
+  <%= render 'layouts/hero'  %>
+
+  <div id="start" class="container content">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <article class="clearfix">
+          <div class="post-date">
+            May 26, 2014 | <a href="">Melissa Sing </a> <span><a href="">11 Comments</a></span>
+          </div>
+          <h2><a href="#">We don't have a brig</a></h2>
+          <p>Use this resource to highlight the points of interest of your products. Just a click to open a brief description of each point, allowing your user to get a deep and fast understanding of your product features. <a class="" href="post-typography.html">Read more</a>
+          </p>
+
+          <% if user_signed_in? %>
+              <p>Signed in as <%= current_user.email %>. Not you? <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %></p>
+          <% else %>
+              <p><%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %></p>
+          <% end %>
+
+          <%= yield %>
+        </article>
+        <article class="clearfix">
+          <div class="post-date">
+            May 26, 2014 | <a href="">Melissa Sing </a> <span><a href="">42 Comments</a></span>
+          </div>
+          <h2><a href="#">Every other day it's food, food, food.</a></h2>
+          <p>I suppose I could part with 'one' and still be feared… I don't 'need' to drink. I can quit anytime I want! Oh, I think we should just stay friends. Noooooo! Five hours? Aw, man! Couldn't you just get me the death penalty? <a class="" href="post-image.html">Read more</a>
+          </p>
+        </article>
+        <article class="clearfix">
+          <div class="post-date">
+            May 12, 2014 | <a href="">Melissa Sing </a> <span><a href="">2 Comments</a></span>
+          </div>
+          <h2><a href="#">Ah, now the ball's in Farnsworth's court!</a></h2>
+          <p>Bender, hurry! This fuel's expensive! Also, we're dying! Fry, we have a crate to deliver. In your time, yes, but nowadays shut up! Besides, these are adult stemcells, harvested from perfectly healthy adults whom I killed for their stemcells. This is the worst part. The calm before the battle. <a class="" href="post-audio.html">Read more</a>
+          </p>
+        </article>
+        <article class="clearfix last">
+          <div class="post-date">
+            May 10, 2014 | <a href="">Melissa Sing </a> <span><a href="">23 Comments</a></span>
+          </div>
+          <h2><a href="#">But I've never been to the moon!</a></h2>
+          <p>But I've never been to the moon! I found what I need. And it's not friends, it's things. Can I use the gun? Incidentally, you have a dime up your nose. One hundred dollars. <a class="" href="post-video.html">Read more</a>
+          </p>
+        </article>
+
+        <div class="post-popular">
+          <div class="row hidden-xs">
+            <div class="col-sm-4 col-md-4">
+              <a href="#"><img src="img2.jpg" class="img-responsive" alt="img2"></a>
+              <h4 class="text-center"><a href="#">But I've never been to the moon!</a></h4>
+              <p class="post-date text-center">MAY 10, 2014</p>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <a href="#"><img  src="img1.jpg" class="img-responsive" alt="img1"></a>
+              <h4 class="text-center"><a href="#">We don't have a brig</a></h4>
+              <p class="post-date text-center">september 27, 2014</p>
+
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <a href="#"><img  src="img3.jpg" class="img-responsive" alt="img3"></a>
+              <h4 class="text-center"><a href="#">Every other day it's food, food, food.</a></h4>
+              <p class="post-date text-center">april 2, 2014</p>
+
+            </div>
+          </div>
+          <div class="row visible-xs">
+            <div class="col-sm-12">
+              <div class="media">
+                <a class="pull-left" href="#"><img class="media-object" src="img2.jpg" width="100" alt=""></a>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="">But I've never been to the moon!</a></h4>
+                  <p class="post-date">may 10, 2014</p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#"><img class="media-object" src="img1.jpg" width="100" alt=""></a>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="#">We don't have a brig</a></h4>
+                  <p class="post-date">september 27, 2014</p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#"><img class="media-object" src="img3.jpg" width="100" alt=""></a>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="#">Every other day it's food, food, food.</a></h4>
+                  <p class="post-date">april 2, 2014</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="paging clearfix">
+          <a class="btn pull-left" href="#"><i class="icon-arrow-left2 left"></i><span>Older</span><span class="hidden-xs"> Posts</span></a>
+          <a class="btn pull-right" href="#"><span>Newer</span><span class="hidden-xs"> Posts</span><i class="icon-arrow-right2 right"></i></a>
+        </div>
+
+      </div>
+    </div><!-- end row -->
+  </div>
+  <%= render 'layouts/footer' %>
+</div>
+
+<%= render 'layouts/login' %>
+
+<!--
+<script type="text/javascript" src="http://demo.angelostudio.net/keylime/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src=http://demo.angelostudio.net/keylime/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://demo.angelostudio.net/keylime/js/placeholders.min.js"></script>
+<script type="text/javascript" src="http://demo.angelostudio.net/keylime/js/wow.min.js"></script>
+<script type="text/javascript" src="http://demo.angelostudio.net/keylime/js/custom.js"></script>
+-->
+
 </body>
 </html>

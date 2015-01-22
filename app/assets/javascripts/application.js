@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap.min
+//= require placeholders.min
+//= require wow.min
 //= require_tree .

@@ -11,7 +11,6 @@ gem 'bcrypt-ruby'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'haml'
 gem 'devise'
 
 # Use jquery as the JavaScript library
@@ -46,7 +45,6 @@ group :test do
 end
 
 group :development do
-  gem 'haml-rails'
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rails'

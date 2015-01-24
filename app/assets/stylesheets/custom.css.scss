@@ -112,6 +112,17 @@ pre {
   font-size: 18px;
   line-height: 24px;
 }
+
+.welcome {
+  font-family: "Merriweather", georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  color: #ffffff;
+  float: right !important;
+  padding-right: 10px;
+}
+
 #hero .middle-text {
   text-align: center;
   position: relative;
@@ -263,6 +274,14 @@ pre {
 .btn.pull-left {
   margin: 0;
 }
+
+.btn.pull-btn {
+  display: block;
+  margin: 0 auto;
+  width: 10%;
+  min-width: 100px;
+}
+
 .btn span {
   line-height: 22px;
   vertical-align: text-bottom;
@@ -312,7 +331,6 @@ pre {
   margin-right: -15px;
   border: 0;
   color: #FFF;
-  text-decoration: none;
 }
 .nav-icon i{
   font-size: 16px;

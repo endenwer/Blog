@@ -14,6 +14,7 @@ describe Post do
   it { should respond_to(:category_id) }
   it { should respond_to(:views) }
   it { should respond_to(:likes) }
+  it { should respond_to(:comments) }
 
   it { should be_valid }
 

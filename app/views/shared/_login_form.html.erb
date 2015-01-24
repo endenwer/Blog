@@ -1,0 +1,25 @@
+<%= form_for(:user, url: session_path(:user), html: {class: 'myform'}) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :email, 'Email', class: 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, 'Пароль', class: 'control-label'  %>
+    <div class="control">
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Пароль' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me, 'Запомнить меня' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Войти', class: 'btn btn-block' %>
+  </div>
+<% end %>

@@ -12,12 +12,7 @@
 <body id="home">
 <%= render 'layouts/menu' %>
 <div id="wrap">
-  <%= render 'layouts/main_nav' %>
-  <%= render 'layouts/hero'  %>
-  <div id="start" class="container content">
-    <%= yield %>
-  </div>
-  <%= render 'layouts/footer' %>
+  <%= yield %>
 </div>
 <%= render 'layouts/login' %>
 <%= render 'layouts/register' %>

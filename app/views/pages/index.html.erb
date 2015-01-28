@@ -1,6 +1,12 @@
 <% provide :title, 'Index page' %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <%= render 'shared/posts' %>
-  </div>
-</div><!-- end row -->
+
+<%= render 'shared/main_nav' %>
+<%= render 'shared/hero'  %>
+<div id="start" class="container content">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= render 'shared/posts' %>
+    </div>
+  </div><!-- end row -->
+</div>
+<%= render 'shared/footer' %>

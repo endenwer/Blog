@@ -4,10 +4,10 @@ describe 'Posts' do
 
   subject{ page }
 
-  describe 'Post page' do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:post) { user.posts.create(title: 'title', content: 'content for a post', category_id: 1) }
 
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:post) { user.posts.create(title: 'title', content: 'content for a post', category_id: 1) }
+  describe 'Post page' do
     before { visit post_path(post) }
 
     it { should have_title(post.title) }
@@ -84,6 +84,77 @@ describe 'Posts' do
           end
         end
       end
+    end
+  end
+
+  describe 'Edit page' do
+
+    describe 'for signed-in users' do
+      before do
+        sign_in user
+        visit edit_post_path(post)
+      end
+
+      describe 'when edit a post with a valid information' do
+        before do
+          fill_in 'title', with: 'Edit post'
+          fill_in 'content', with: 'Edit post'
+          fill_in 'category', with: 3
+          click_button 'Отправить'
+        end
+
+        specify { expect(post.title).to should eq 'Edit post' }
+        specify { expect(post.content).to should eq 'Edit post' }
+        specify { expect(post.category).to should eq 3 }
+      end
+
+      describe 'when edit a post with a invalid information' do
+        before { click_button 'Отправить' }
+
+        it { should have_selector('.alert')}
+
+        specify { expect(post.title).not_to change(post, :title) }
+        specify { expect(post.content).not_to change(post, :content) }
+        specify { expect(post.category).not_to change(post, :category) }
+      end
+    end
+
+    describe 'for non-signed-in users' do
+      before { get edit_post_path(post) }
+      specify { expect(response).to redirect_to(new_user_session_path) }
+    end
+  end
+
+  describe 'New post page' do
+
+    describe 'for signed-in users' do
+      before do
+        sign_in user
+        visit new_post_path(post)
+      end
+
+      describe 'when create a new post with a valid information' do
+        before do
+          fill_in 'title', with: 'Post title'
+          fill_in 'title', with: 'Post content'
+          fill_in 'category', with: 1
+        end
+
+        it 'should created a new post' do
+          expect { click_button 'Отправить' }.to change(Post, :count).by(1)
+        end
+      end
+
+      describe 'when create a new post with a invalid information' do
+        it 'should created a new post' do
+          expect { click_button 'Отправить' }.to change(Post, :count).by(1)
+        end
+      end
+    end
+
+    describe 'for non-signed-in users' do
+      before { get new_post_path(post) }
+      specify { expect(response).to redirect_to(new_user_session_path) }
     end
   end
 end

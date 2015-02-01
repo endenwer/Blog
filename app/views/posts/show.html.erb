@@ -5,7 +5,7 @@
 <div class="container content">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-
+      <%= render 'shared/flash_messages' unless flash[:success].nil? %>
       <div class="post-date">
         <%= time_ago_in_words(@post.created_at) %> | <%= link_to @post.user.login, @post.user %> <span>
         <a href=""><%= "Комментариев #{ @post.comments.count }" %></a></span>

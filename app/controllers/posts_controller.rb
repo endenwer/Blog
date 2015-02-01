@@ -16,16 +16,21 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_path(current_user), success: 'Пост успешно создан!'
     else
-      redirect_to new_post_path, error: @post.errors.full_messages
+      redirect_to new_post_path, danger: @post.errors.full_messages
     end
   end
 
   def edit
-
+    @post = Post.find(params[:id])
   end
 
   def update
-
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user.id && @post.update_attributes(post_params)
+      redirect_to post_path(@post), success: 'Пост успешно изменен!'
+    else
+      redirect_to edit_post_path(@post), danger: @post.errors.full_messages
+    end
   end
 
   private

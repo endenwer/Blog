@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121165704) do
+ActiveRecord::Schema.define(version: 20150203140201) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20150121165704) do
     t.integer  "likes",      default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.string   "email"
   end
 
   create_table "posts", force: :cascade do |t|

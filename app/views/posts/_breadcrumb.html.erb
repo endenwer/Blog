@@ -1,0 +1,18 @@
+<section id="breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <ol class="breadcrumb">
+          <li><%= link_to 'Главная страница', root_path %></li>
+          <li><%=
+              if @post.category
+                link_to(@post.category.name, category_path(@post.category))
+              else
+                'Без категории'
+              end %></li>
+          <li class="active"><%= @post.title %></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

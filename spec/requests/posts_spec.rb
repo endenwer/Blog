@@ -14,7 +14,8 @@ describe 'Posts' do
     it { should have_content(post.title) }
     it { should have_content(post.content) }
     it { should have_content(post.user.login) }
-    it { should have_link(category_path(Category.find(post.category_id))) }
+    it { should have_content(post.category.name) }
+    it { should have_link(user_path(post.user)) }
 
     describe 'for signed-in users' do
       before do
@@ -22,14 +23,14 @@ describe 'Posts' do
         visit post_path(post)
       end
 
-      it { should_not have_field('email') }
-      it { should_not have_field('name') }
+      it { should_not have_field('comment_email') }
+      it { should_not have_field('comment_name') }
 
       describe 'when user is a author this post' do
         it { should have_link(edit_post_path(post))}
       end
 
-      describe 'when user is not a autor this post' do
+      describe 'when user is not a author this post' do
         let!(:not_author) { FactoryGirl.create(:user)  }
         before do
           sign_in not_author
@@ -43,17 +44,17 @@ describe 'Posts' do
 
         describe 'with valid information' do
           before do
-            fill_in 'content', with: 'My comment'
+            fill_in 'comment_content', with: 'My comment'
           end
 
           it 'should create a comment for this post' do
-            expect { click_button('Отправить') }.to change(Post, :count).by(1)
+            expect { click_button('Отправить') }.to change(Comment, :count).by(1)
           end
         end
 
         describe 'with invalid information' do
           it 'should not create a comment' do
-            expect { click_button('Отправить') }.not_to change(Post, :count)
+            expect { click_button('Отправить') }.not_to change(Comment, :count)
           end
         end
       end
@@ -61,20 +62,20 @@ describe 'Posts' do
 
     describe 'for non-signed-in users' do
       it { should_not have_link(edit_post_path(post)) }
-      it { should have_field('email') }
-      it { should have_field('name') }
+      it { should have_field('comment_email') }
+      it { should have_field('comment_name') }
 
       describe 'when user commit a comment' do
 
         describe 'with valid information' do
           before do
-            fill_in 'content', with: 'My comment'
-            fill_in 'name', with: 'My name'
-            fill_in 'email', with: 'My email'
+            fill_in 'comment_content', with: 'My comment'
+            fill_in 'comment_name', with: 'My name'
+            fill_in 'comment_email', with: 'My email'
           end
 
           it 'should create a comment for this post' do
-          expect { click_button 'Отправить' }.to change(Post, :count ).by(1)
+          expect { click_button 'Отправить' }.to change(Comment, :count ).by(1)
         end
         end
 
@@ -97,25 +98,20 @@ describe 'Posts' do
 
       describe 'when edit a post with a valid information' do
         before do
-          fill_in 'title', with: 'Edit post'
-          fill_in 'content', with: 'Edit post'
-          fill_in 'category', with: 3
+          fill_in 'post_title', with: 'Edit post'
+          fill_in 'post_content', with: 'Edit post'
+          find_by_id('post_category_id').find("option[value='2']").click
           click_button 'Отправить'
         end
 
-        specify { expect(post.title).to should eq 'Edit post' }
-        specify { expect(post.content).to should eq 'Edit post' }
-        specify { expect(post.category).to should eq 3 }
+        specify { expect(post.title).to should == 'Edit post' }
+        specify { expect(post.content).to should == 'Edit post' }
+        specify { expect(post.category).to should == 2 }
       end
 
       describe 'when edit a post with a invalid information' do
         before { click_button 'Отправить' }
-
         it { should have_selector('.alert')}
-
-        specify { expect(post.title).not_to change(post, :title) }
-        specify { expect(post.content).not_to change(post, :content) }
-        specify { expect(post.category).not_to change(post, :category) }
       end
     end
 
@@ -128,16 +124,17 @@ describe 'Posts' do
   describe 'New post page' do
 
     describe 'for signed-in users' do
+      let(:new_post) { user.posts.build }
       before do
         sign_in user
-        visit new_post_path(post)
+        visit new_post_path(new_post)
       end
 
       describe 'when create a new post with a valid information' do
         before do
-          fill_in 'title', with: 'Post title'
-          fill_in 'title', with: 'Post content'
-          fill_in 'category', with: 1
+          fill_in 'post_title', with: 'Post title'
+          fill_in 'post_content', with: 'Post content'
+          find_by_id('post_category_id').find("option[value='1']").click
         end
 
         it 'should created a new post' do

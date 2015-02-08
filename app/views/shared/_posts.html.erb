@@ -1,7 +1,7 @@
 <% if @posts.any? %>
     <%= render partial: 'shared/post', collection: @posts %>
     <div class="paging clearfix">
-      <%= button_to 'Еще', {action: 'index'}, remote: true, method: :get, class: 'btn pull-btn', id: 'pull-btn' %>
+      <%= link_to 'Еще', root_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true if @posts.next_page %>
     </div>
 <% else %>
     <p>Не удалось найти посты.</p>

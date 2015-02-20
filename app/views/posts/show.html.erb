@@ -10,7 +10,7 @@
         <%= time_ago_in_words(@post.created_at) %> |
         <%= link_to @post.user.login, @post.user %> |
         <%= link_to('Редактировать', edit_post_path(@post)) if current_user == @post.user %>
-        <span><a href=""><%= "Комментариев #{ @post.comments.count }" %></a></span>
+        <span><a href="#disqus_thread"><%= "Комментариев" %></a></span>
       </div>
       <h1><%= @post.title %></h1>
       <%= @post.content %>
@@ -23,19 +23,18 @@
         </div>
       </div>
 
-      <h3><%= "Комментариев #{ @post.comments.count }" %></h3>
-      <%= render @comments %>
-
-      <div id="comments_pagination">
-        <span class="page-numbers current">1</span>
-        <a class="page-numbers" href="#">2</a>
-        <a class="next page-numbers" href="#"><i class="icon-arrow-right2"></i></a>
-      </div>
-
-      <h3>Добавить новый комментарий</h3>
-      <%= render 'comment_form' %>
-
+      <%= render 'comments' %>
     </div>
   </div>
 </div>
 <%= render 'shared/footer' %>
+<script type="text/javascript">
+  var disqus_shortname = 'endenwer'; // required: replace example with your forum shortname
+
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'comments/new'
 
-  devise_for :users
+  devise_for :users, :skip => :registerable
   root to: 'pages#index'
 
   resources :users

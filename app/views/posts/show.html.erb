@@ -15,6 +15,7 @@
         <%= link_to('Редактировать', edit_post_path(@post)) if current_user == @post.user %>
         <span><a href="#disqus_thread"><%= "Комментариев" %></a></span>
       </div>
+
       <%= render 'comments' %>
     </div>
   </div>

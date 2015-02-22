@@ -6,9 +6,6 @@
       <% if user_signed_in? %>
           <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-blog outline-white pull-right' %>
           <div class="welcome">Привет, <%= link_to current_user.login, current_user %></div>
-      <% else %>
-          <a class="btn btn-blog outline-white pull-right" href="#" data-toggle="modal" data-target="#loginModal">Войти</a>
-          <a class="btn btn-blog outline-white pull-right" href="#" data-toggle="modal" data-target="#registerModal">Регистрация</a>
       <% end %>
     </div>
   </div>

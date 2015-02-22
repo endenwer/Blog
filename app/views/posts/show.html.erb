@@ -6,23 +6,15 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <%= render 'shared/flash_messages' unless flash[:success].nil? %>
+      <h1><%= @post.title %></h1>
+      <%= @post.content %>
+
       <div class="post-date">
         <%= time_ago_in_words(@post.created_at) %> |
         <%= link_to @post.user.login, @post.user %> |
         <%= link_to('Редактировать', edit_post_path(@post)) if current_user == @post.user %>
         <span><a href="#disqus_thread"><%= "Комментариев" %></a></span>
       </div>
-      <h1><%= @post.title %></h1>
-      <%= @post.content %>
-
-      <div id="author" class="clearfix">
-        <img class="img-circle" alt="" src="../assets/author-sing.jpg" height="96" width="96">
-        <div class="author-info">
-          <h3><%= link_to @post.user.login, user_path(@post.user) %></h3>
-          <p>If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right. You can follow her on <a href="">Twitter</a>.</p>
-        </div>
-      </div>
-
       <%= render 'comments' %>
     </div>
   </div>

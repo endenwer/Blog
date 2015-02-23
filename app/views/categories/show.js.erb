@@ -4,7 +4,7 @@ $('article').last().after("<%= escape_javascript(render(@posts)) %>")
 <% if @posts.total_pages == @posts.current_page %>
   $('#pull-btn').remove();
 <% else %>
-  $('#pull-btn').attr('href', "<%= root_path(:page => @posts.next_page) %>");
+  $('#pull-btn').attr('href', "<%= category_path(:page => @posts.next_page) %>");
   $('#pull-btn').text('Еще');
   $('#pull-btn').attr('class', 'btn pull-btn');
 <% end %>

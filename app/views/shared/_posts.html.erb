@@ -1,7 +1,11 @@
 <% if @posts.any? %>
     <%= render partial: 'shared/post', collection: @posts %>
     <div class="paging clearfix">
-      <%= link_to 'Еще', root_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true if @posts.next_page %>
+      <% if controller.controller_name == 'pages' %>
+        <%= link_to 'Еще', root_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true unless @posts.total_pages == @posts.current_page  %>
+      <% else %>
+        <%= link_to 'Еще', category_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true unless @posts.total_pages == @posts.current_page %>
+      <% end %>
     </div>
 <% else %>
     <p>Не удалось найти посты.</p>

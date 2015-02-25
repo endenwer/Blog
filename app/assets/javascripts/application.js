@@ -17,3 +17,4 @@
 //= require placeholders.min
 //= require wow.min
 //= require_tree .
+//= require ckeditor/init

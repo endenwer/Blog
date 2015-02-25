@@ -55,6 +55,13 @@ GEM
       timers (~> 4.0.0)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.5)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -153,6 +160,11 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -263,6 +275,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
   capybara
+  ckeditor
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails
@@ -277,6 +290,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   libnotify
+  paperclip
   rails (= 4.2.0)
   rspec-rails
   sass-rails (~> 5.0)

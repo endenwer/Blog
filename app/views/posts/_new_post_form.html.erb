@@ -11,9 +11,9 @@
     <div class="form-group">
       <%= f.label :content, 'Контент поста', html: { class: 'control-label' } %>
       <div class="controls">
-        <%= f.text_area :content, placeholder: 'Контент поста',
+        <%= f.cktext_area :content, placeholder: 'Контент поста',
                         class: 'form-control input-lg requiredField',
-                        row: '3'%>
+                        row: '3', :ckeditor => {:language => 'ru'} %>
       </div>
     </div>
 

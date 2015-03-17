@@ -16,5 +16,6 @@
 //= require bootstrap.min
 //= require placeholders.min
 //= require wow.min
-//= require_tree .
 //= require ckeditor/init
+//= require_tree .
+hljs.initHighlightingOnLoad();

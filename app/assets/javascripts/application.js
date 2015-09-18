@@ -21,4 +21,5 @@
 //= require ckeditor/plugins/codesnippet/plugin
 //= require ckeditor/plugins/lineutils/plugin
 //= require ckeditor/plugins/widget/plugin
+//= require custom
 hljs.initHighlightingOnLoad();

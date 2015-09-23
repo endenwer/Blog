@@ -1,8 +1,0 @@
-<article class="clearfix">
-  <div class="post-date">
-    <%= time_ago_in_words(post.created_at) %> | <%= link_to post.user.login, post.user %> <span><%= link_to "Комментариев #{ post.comments.count }", post %></span>
-  </div>
-  <h2><%= link_to post.title, post %></h2>
-  <p><%= post.content[0..300] %> <%= link_to 'Читать дальше', post %>
-  </p>
-</article>

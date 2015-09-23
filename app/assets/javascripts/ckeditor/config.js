@@ -6,7 +6,13 @@
 CKEDITOR.editorConfig = function( config ) {
   config.extraPlugins = 'lineutils';
   config.extraPlugins = 'widget';
-  config.extraPlugins = 'codesnippet' 
+  config.extraPlugins = 'codesnippet'
+  config.extraPlugins = 'wpmore';
+
+  // Remove all formatting when pasting text copied from websites or Microsoft Word
+  config.forcePasteAsPlainText = true;
+  config.pasteFromWordRemoveFontStyles = true;
+  config.pasteFromWordRemoveStyles = true;
 
   config.codeSnippet_theme = 'railscasts';
 };

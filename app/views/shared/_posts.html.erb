@@ -3,6 +3,8 @@
     <div class="paging clearfix">
       <% if controller.controller_name == 'pages' %>
         <%= link_to 'Еще', root_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true unless @posts.total_pages == @posts.current_page  %>
+      <% elsif controller.controller_name == 'users' %>
+        <%= link_to 'Еще', user_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true unless @posts.total_pages == @posts.current_page %>
       <% else %>
         <%= link_to 'Еще', category_path(:page => @posts.next_page), class: 'btn pull-btn', id: 'pull-btn', remote: true unless @posts.total_pages == @posts.current_page %>
       <% end %>

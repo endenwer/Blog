@@ -5,6 +5,7 @@
       <a class="menu-link nav-icon" href="#"><i class="icon-menu2"></i></a>
       <% if user_signed_in? %>
           <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-blog outline-white pull-right' %>
+          <%= link_to 'Добавить пост', new_post_path, class: 'btn btn-blog outline-white pull-right' %>
           <div class="welcome">Привет, <%= link_to current_user.login, current_user %></div>
       <% end %>
     </div>

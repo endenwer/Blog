@@ -1,10 +1,2 @@
-$('#pull-btn').text('Загрузка');
-$('#pull-btn').attr('class', 'not-active btn pull-btn');
-$('article').last().after("<%= escape_javascript(render(@posts)) %>")
-<% if @posts.total_pages == @posts.current_page %>
-  $('#pull-btn').remove();
-<% else %>
-  $('#pull-btn').attr('href', "<%= user_path(:page => @posts.next_page) %>");
-  $('#pull-btn').text('Еще');
-  $('#pull-btn').attr('class', 'btn pull-btn');
-<% end %>
+<%= render partial: 'shared/show_posts', locals: { posts: @posts,
+                                                   next_page_link: user_path(:page => @posts.next_page) } %>

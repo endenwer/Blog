@@ -1,0 +1,10 @@
+$('#pull-btn').text('Загрузка');
+$('#pull-btn').attr('class', 'not-active btn pull-btn');
+$('article').last().after("<%= escape_javascript(render partial: 'shared/post', collection: posts) %>")
+<% if posts.total_pages == posts.current_page %>
+  $('#pull-btn').remove();
+<% else %>
+  $('#pull-btn').attr('href', "<%= next_page_link %>");
+  $('#pull-btn').text('Еще');
+  $('#pull-btn').attr('class', 'btn pull-btn');
+<% end %>

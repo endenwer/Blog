@@ -34,6 +34,9 @@ bower.json
 #Ignore pow enironment settings
 .powenv
 
+#Ignore the file with erd
+erd.pdf
+
 .project
 .DS_Store
 .idea

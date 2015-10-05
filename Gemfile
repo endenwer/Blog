@@ -36,6 +36,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rails'
+  gem "rails-erd", '~> 1.4.2'
 end
 
 group :production do
